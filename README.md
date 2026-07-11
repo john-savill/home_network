@@ -23,13 +23,18 @@ Below I will compare prices (as of Nov/Dec 2025 UK) for 3 setups; using 2.5-inch
 
 __Subtotal: 66.5__
 
-#### SATA 2.5-inch SSD setup/storage:
+#### hat SATA 2.5-inch SSD setup/storage:
 | Item | Price | note |
 | --- | --- | --- |
 | Radxa Penta SATA HAT | 45 | availability spotty |
 | Storage (2 x 500GB SSD) | 60 | Sandisk |
 
 __Subtotal: 105__
+
+#### simple USB SATA 2.5-inch SSD setup/storage:
+| USB to sata connection wires | | |
+| enclosure | | |
+| Storage | | |
 
 #### M.2 setup/storage WO PoE:
 | Item | Price | note |
@@ -54,10 +59,30 @@ __Subtotal: 171.59__
 
 ### Decision for my use case
 
-I'm leaning towards the M.2 setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit.
+I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for photo storage and the addtional hardware is cheaper.
 
 ### Steps
 
 Using the Pi-5 4GB version for the NAS. 4GB is fine for the simple NAS I'll be running. I've Flashed Pi-OS onto a 32GB Micro-SD card and connected the Pi to my home network.
 
 Next I connect up the appropriate hardware.
+
+...
+
+## 4B cluster
+
+From an office closure I was lucky enough to get a few Pi 4Bs with 64GB SD cards. I plan to connect these up together for running misc. other home network tools (Pi-hole, etc).
+
+### Steps 
+
+...
+
+## AI on CM5
+
+I have a CM5 on a development board I have used for some intial learning. With the NVME SSD connected I would like to run a local LLM for my own benefit.
+
+### Steps
+
+...
+
+
