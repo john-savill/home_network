@@ -27,14 +27,14 @@ __Subtotal: 66.5__
 | Item | Price | note |
 | --- | --- | --- |
 | Radxa Penta SATA HAT | 45 | availability spotty |
-| Storage (2 x 500GB SSD) | 60 | Sandisk |
+| Storage (2 x 256GB SSD) | 60 | Integral |
 
 __Subtotal: 105__
 
 #### simple USB SATA 2.5-inch SSD setup/storage:
 | USB to sata connection wires | | |
 | enclosure | | |
-| Storage | | |
+| Storage (2 x 256GB SSD) | 60 | Integral |
 
 #### M.2 setup/storage WO PoE:
 | Item | Price | note |
@@ -59,7 +59,7 @@ __Subtotal: 171.59__
 
 ### Decision for my use case
 
-I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for photo storage and the addtional hardware is cheaper.
+I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for photo storage and the addtional hardware is cheaper. I found a good deal on a couple of 256GB, Integral (UK) brand sata SSDs. 256GB is enough for my local storage in a RAID configuration, or 512GB without backups.
 
 ### Steps
 
