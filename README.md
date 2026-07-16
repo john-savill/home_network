@@ -32,9 +32,12 @@ __Subtotal: 66.5__
 __Subtotal: 105__
 
 #### simple USB SATA 2.5-inch SSD setup/storage:
-| USB to sata connection wires | | |
-| enclosure | | |
+| USB to sata connection wires | (2 x 6) 12 | Pihut (UCTRONICS) |
+| --- | --- | --- |
+| NAS bracket enclosure | 12.50 | Pihut (UCTRONICS) |
 | Storage (2 x 256GB SSD) | 60 | Integral |
+
+__Subtotal: 84.50__
 
 #### M.2 setup/storage WO PoE:
 | Item | Price | note |
@@ -59,13 +62,47 @@ __Subtotal: 171.59__
 
 ### Decision for my use case
 
-I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for photo storage and the addtional hardware is cheaper. I found a good deal on a couple of 256GB, Integral (UK) brand sata SSDs. 256GB is enough for my local storage in a RAID configuration, or 512GB without backups.
+I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for mostly photo storage and the addtional hardware is cheaper. I found a good deal on a couple of 256GB, Integral (UK) brand sata SSDs. 256GB is enough for my local storage in a RAID configuration, or 512GB without backups.
 
 ### Steps
 
 Using the Pi-5 4GB version for the NAS. 4GB is fine for the simple NAS I'll be running. I've Flashed Pi-OS onto a 32GB Micro-SD card and connected the Pi to my home network.
 
-Next I connect up the appropriate hardware.
+Next I connect up the appropriate hardware, The two SSDs via USB and screwed them into the NAS enclouse baseplate. Then I went through the following steps to make them usable memory:
+
+Check the SSDs are viewed on the RPI (named soemthing like sda and sdb).
+
+    lsblk
+
+Partition the drives individually (same for sdb).
+    
+    sudo fdisk /dev/sda
+
+In prompt
+ - Enter n to create a new partition.
+ - Enter p for primary partition.
+ - Use the default option for all other prompts
+
+Format the drive (same for sdb).
+
+    sudo mkfs.ext4 /dev/sda1
+
+Mount the drive (same for sdb).
+
+    sudo mount /dev/sda1
+
+And ensure that the drives are mounted after each boot,
+
+    sudo nano /etc/fstab
+
+by adding the following lines at the end
+
+    /dev/sda1 /mnt/sda1/ ext4 defaults,noatime 0 1
+    /dev/sda1 /mnt/sdb1/ ext4 defaults,noatime 0 1
+
+One drive is running [immich](https://immich.app) for local photo storage.
+
+One drive with be shared across my network for other document storage.
 
 ...
 
