@@ -66,7 +66,7 @@ I'm leaning towards the simple SATA setup without PoE for the moment, I should b
 
 ### Steps
 
-Using the Pi-5 4GB version for the NAS. 4GB is fine for the simple NAS I'll be running. I've Flashed Pi-OS onto a 32GB Micro-SD card and connected the Pi to my home network.
+Using the Pi-5 4GB version for the NAS. 4GB is fine for the simple NAS I'll be running. I've Flashed Pi-OS onto a 32GB Micro-SD card and connected the Pi to my home network. It is currently also running my [pi-hole](https://www.raspberrypi.com/tutorials/running-pi-hole-on-a-raspberry-pi/) network ad-blocking and DNS. Specifically enabled for my phone, laptop and smart TV.  
 
 Next I connect up the appropriate hardware, The two SSDs via USB and screwed them into the NAS enclouse baseplate. Then I went through the following steps to make them usable memory:
 
@@ -115,6 +115,8 @@ From an office closure I was lucky enough to get a few Pi 4Bs with 64GB SD cards
 I ordered a custom 3D printed 5u 10-inch mini rack and a for holding all the relvant hardware and a custom rack mount for holding the RPI 4bs.
 
 ![Initial rack setup](IMG_2845.HEIC)
+
+The RPIs have been flashed, connected to my network via ethernet and fitted into the rack mount.
 
 ## AI on CM5
 
