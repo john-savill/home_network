@@ -102,7 +102,7 @@ by adding the following lines at the end
 
 One drive is running [immich](https://immich.app) for local photo storage.
 
-One drive with be shared across my network for other document storage.
+The other drive will be shared across my network for other document storage.
 
 ...
 
@@ -112,7 +112,9 @@ From an office closure I was lucky enough to get a few Pi 4Bs with 64GB SD cards
 
 ### Steps 
 
-...
+I ordered a custom 3D printed 5u 10-inch mini rack and a for holding all the relvant hardware and a custom rack mount for holding the RPI 4bs.
+
+![Initial rack setup](IMG_2845.HEIC)
 
 ## AI on CM5
 
