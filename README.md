@@ -102,19 +102,19 @@ by adding the following lines at the end
 
 One drive is running [immich](https://immich.app) for local photo storage.
 
-The other drive will be shared across my network for other document storage.
+The other drive will either be shared across my network for other document storage or also used by immich, depending on the number of photos. To share the drive I would simply use SAMBA to make it networked drivr for my local workstations.
 
 ...
 
 ## 4B cluster
 
-From an office closure I was lucky enough to get a few Pi 4Bs with 64GB SD cards. I plan to connect these up together for running misc. other home network tools (Pi-hole, etc).
+From an office closure I was lucky enough to get a few Pi 4Bs with 64GB SD cards. I plan to connect these up together for running other home network tools (AI-frontend, exo cluster etc).
 
 ### Steps 
 
 I ordered a custom 3D printed 5u 10-inch mini rack and a for holding all the relvant hardware and a custom rack mount for holding the RPI 4bs.
 
-![Initial rack setup](IMG_2845.HEIC)
+![Initial rack setup](IMG_2867.HEIC)
 
 The RPIs have been flashed, connected to my network via ethernet and fitted into the rack mount.
 
@@ -122,8 +122,6 @@ The RPIs have been flashed, connected to my network via ethernet and fitted into
 
 I have a CM5 on a development board I have used for some intial learning. With the NVME SSD connected I would like to run a local LLM for my own benefit.
 
-### Steps
-
-...
+Since this is requires some complex setup I will dedicate a whole page to it at [AI_notes.md](AI_notes.md)
 
 
