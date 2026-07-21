@@ -1,0 +1,51 @@
+image: $CI_PROJECT_NAME
+
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_IMAGE: $CI_PROJECT_NAME
+  npm_install: true
+  npm_version: 6.14.13
+  node_version: 14.17.0
+  yarn_install: true
+  yarn_version: 1.22.10
+  docker_tag: $CI_COMMIT_REF_NAME
+  docker_password: $CI_DEPLOY_TOKEN
+
+build:
+  stage: build
+  script:
+    - npm install
+    - yarn install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/*
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - npm test
+  artifacts:
+    paths:
+      - dist/*
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - docker build -t $DOCKER_IMAGE $CI_PROJECT_PATH
+    - docker tag $DOCKER_IMAGE $DOCKER_IMAGE:$docker_tag
+    - docker login -u $CI_DEPLOY_TOKEN -p $docker_password
+    - docker push $DOCKER_IMAGE:$docker_tag
+  environment:
+    name: production
+    url: https://example.com
+  only:
+    - main
