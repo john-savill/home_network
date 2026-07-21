@@ -89,6 +89,7 @@ prompt test 3: "write a c function for reversing a string"
 |llama.cpp web prompt test 2| |4.19 t/s|4.58 t/s|
 |llama.cpp web prompt test 3| |4.42 t/s|4.71 t/s|
 |RAM usage*| |3.1GB|3.6GB|
+|Context| |limited to 4096|32.77K|
 
 *just quickly taked with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
 
@@ -96,7 +97,8 @@ prompt test 3: "write a c function for reversing a string"
 
 accuracy, continued conversation, etc.
 
-llama32: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
-Qwen: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good.
+ - llama32: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
+
+ - Qwen: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good.
 
 
