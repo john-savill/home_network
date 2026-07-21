@@ -92,19 +92,20 @@ prompt test 3: "write a c function for reversing a string"
 |Open web/ollama prompt test 1|2.19 t/s| | |
 |Open web/ollama prompt test 2|2.08 t/s| | |
 |Open web/ollama prompt test 3| | | |
-|llama.cpp web prompt test 1| |4.34 t/s|4.61 t/s|
-|llama.cpp web prompt test 2| |4.19 t/s|4.58 t/s|
+|llama.cpp web prompt test 1|3.3 t/s|4.34 t/s|4.61 t/s|
+|llama.cpp web prompt test 2|3.1 t/s|4.19 t/s|4.58 t/s|
 |llama.cpp web prompt test 3| |4.42 t/s|4.71 t/s|
 |RAM usage*| |3.1GB|3.6GB|
-|llama.cpp context| |limited to 4096|32.77K|
+|llama.cpp context|limited to 4096|limited to 4096|32.77K|
 
 *just quickly taken with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
 
 ### notes
 
-accuracy, continued conversation, etc.
+accuracy, continued conversation, other tools (image rec?) etc.
 
  - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow
+ - ministral on llama.cpp: required context limiting to run. Noticably slower ininerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
 
  - llama32 on llama.cpp: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
 
