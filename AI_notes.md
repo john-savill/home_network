@@ -6,12 +6,12 @@
 
 1. [AIDER](https://aider.chat) A local terminal interface. I prefer OLLAMA local anyway and this can't be accesses remotely so won't be recorded in any of the benchmark results.
 
-2. [OLLAMA](https://ollama.com) Out-of-the-box experience. Some modifications made to the configuration:
+2. [OLLAMA](https://ollama.com) Out-of-the-box experience `curl -fsSL https://ollama.com/install.sh | sh`. Some modifications made to the configuration:
 
 ```
 sudo systemctl edit ollama.service
 ```
-added in these lines to make the API vieable from the web and control RAM usage:
+added in these lines to make the API viewable from the web and control RAM usage:
 
 ```
 [Service]
@@ -24,10 +24,17 @@ then restart the ollama service:
 sudo systemctl daemon-reload
 sudo systemctl restart ollama
 ```
+To run a specific model from hugging face I just ran it once locally to download it into the local cache. The LLM can then be tested locally or used from the OpenWeb UI when pointed at the ollama public API:
+
+```
+ollama run qwen2.5-coder:3b
+ollama run llama3.2:3b
+ollama run ministral-3:3b
+```
 
 3. [llama.cpp]([https://llama.app](https://github.com/ggml-org/llama.cpp))
 
-...
+I built this from source on the Pi CM5 so that it is optimised. The process was relatively simple, following the build steps from the repo. I did finish with adding `export PATH="/home/john/llama.cpp/build/bin:$PATH"` to the end of the .bashrc file, which isn't detailed in the setup but required to run the commands outside of a the build/bin folder.
 
 ## Web Interface
 
@@ -48,12 +55,12 @@ I have to launch the models individually. To download and launch with the other 
 wget https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/qwen2.5-coder-3b-instruct-q4_k_m.gguf -O qwen2.5-coder-3b-q4km.gguf
 wget https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct-Q4_K_M.gguf -O llama32-3b-q4km.gguf
 ```
-...
+(add download of ministral here)
 ```
 llama-server -m models/qwen2.5-coder-3b-q4km.gguf --host 0.0.0.0
 llama-server -m models/llama32-3b-q4km.gguf --host 0.0.0.0 --ctx-size 4096
 ```
-...
+(add runing of minstral here)
 ## LLMs
 
 These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit.
@@ -91,7 +98,7 @@ prompt test 3: "write a c function for reversing a string"
 |RAM usage*| |3.1GB|3.6GB|
 |llama.cpp context| |limited to 4096|32.77K|
 
-*just quickly taked with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
+*just quickly taken with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
 
 ### notes
 
