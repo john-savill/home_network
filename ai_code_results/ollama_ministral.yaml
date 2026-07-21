@@ -1,0 +1,101 @@
+stages:
+  - lint       # Static code analysis & formatting
+  - test       # Unit & Integration Tests
+  - deploy     # Deployment to staging/production
+
+# Cache dependencies to speed up builds
+cache:
+  paths:
+    - node_modules/          # Example for Node.js projects
+    - .npm-cache/
+    - target/                # Example for Rust/Cargo projects
+    - .m2/repository/       # Example for Maven projects
+
+variables:
+  # Use Docker-in-Docker (Dind) for multi-stage builds if needed
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+
+# Configure Docker build context (if using Docker)
+before_script:
+  - apt-get update && apt-get install -y docker.io  # Install Docker on CI runner
+  - mkdir -p ~/.docker
+  - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY_USER -u $CI_REGISTRY_USER --password-stdin
+
+# =============================================
+# LINTING & FORMATTING STAGE (Stage: lint)
+# =============================================
+lint:
+  stage: lint
+  image: node:20-alpine  # Example for Node.js projects; adjust as needed
+  script:
+    - npm install --prefer-offline
+    - npm run lint       # Run ESLint, Prettier, etc.
+    - npm test -- --no-watch  # Skip watch mode in tests
+
+# =============================================
+# UNIT & INTEGRATION TESTS STAGE (Stage: test)
+# =============================================
+unit-tests:
+  stage: test
+  image: node:20-alpine
+  script:
+    - npm install --prefer-offline
+    - npm run test:unit      # Run unit tests
+
+integration-tests:
+  stage: test
+  image: node:20-alpine
+  services:
+    - postgres:15          # Example for testing against a DB
+  variables:
+    DATABASE_URL: "postgres://user:pass@postgres:5432/dbname"
+  script:
+    - npm install --prefer-offline
+    - npm run test:integration
+
+# =============================================
+# STATIC ANALYSIS STAGE (Optional)
+# =============================================
+static-analysis:
+  stage: lint
+  image: golangci/golangci-lint:v1.56
+  script:
+    - golangci-lint run --config=.golangci.yml
+
+# =============================================
+# DEPLOYMENT STAGE (Stage: deploy)
+# =============================================
+deploy-staging:
+  stage: deploy
+  image: docker:24.0.7-dind  # Docker-in-Docker for building images
+  services:
+    - name: docker:24.0.7-dind
+      alias: docker
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA -f Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  only:
+    - main                   # Deploy from main branch
+
+deploy-production:
+  stage: deploy
+  image: docker:24.0.7-dind
+  services:
+    - name: docker:24.0.7-dind
+      alias: docker
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_IMAGE:latest
+    - docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - tags                   # Deploy from tagged commits
+
+# =============================================
+# CI/CD Hooks (Optional)
+# =============================================
+before_script:
+  - apt-get update && apt-get install -y curl wget git
