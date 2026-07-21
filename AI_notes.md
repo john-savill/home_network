@@ -43,9 +43,17 @@ nice it has all the LLMs to choose from the API as it is running.
 ```
 llama-server -hf Qwen/Qwen2.5-Coder-3B-Instruct-GGUF:q4_k_m --host 0.0.0.0
 ```
-have to launch the models individually (check) to launch with the other models replace the huggingface link with:
+I have to launch the models individually. To download and launch with the other models:
+```
+wget https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/qwen2.5-coder-3b-instruct-q4_k_m.gguf -O qwen2.5-coder-3b-q4km.gguf
+wget https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct-Q4_K_M.gguf -O llama32-3b-q4km.gguf
+```
 ...
-
+```
+llama-server -m models/qwen2.5-coder-3b-q4km.gguf --host 0.0.0.0
+llama-server -m models/llama32-3b-q4km.gguf --host 0.0.0.0 --ctx-size 4096
+```
+...
 ## LLMs
 
 These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit.
@@ -77,10 +85,10 @@ prompt test 3: "write a c function for reversing a string"
 |Open web/ollama prompt test 1| | | |
 |Open web/ollama prompt test 2| | | |
 |Open web/ollama prompt test 3| | | |
-|llama.cpp web prompt test 1| | |4.61 t/s|
-|llama.cpp web prompt test 2| | |4.58 t/s|
-|llama.cpp web prompt test 3| | |4.71 t/s|
-|RAM usage*| | |3.6GB|
+|llama.cpp web prompt test 1| |4.34 t/s|4.61 t/s|
+|llama.cpp web prompt test 2| |4.19 t/s|4.58 t/s|
+|llama.cpp web prompt test 3| |4.42 t/s|4.71 t/s|
+|RAM usage*| |3.1GB|3.6GB|
 
 *just quickly taked with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
 
@@ -88,6 +96,7 @@ prompt test 3: "write a c function for reversing a string"
 
 accuracy, continued conversation, etc.
 
+llama32: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
 Qwen: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good.
 
 
