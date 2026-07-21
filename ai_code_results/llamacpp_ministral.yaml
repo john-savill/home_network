@@ -1,0 +1,71 @@
+stages:
+  - build
+  - test
+  - deploy
+
+# Common variables (recommended: define these in GitLab CI/CD settings)
+variables:
+  DOCKER_DRIVER: overlay2  # Better performance for multi-container apps
+  BUILD_DIR: .            # Directory to build from (adjust if needed)
+  TEST_ENV: "test"        # Environment for testing (e.g., test DB, CI workers)
+  PROD_ENV: "production"  # Environment for deployment
+
+# --- Build Stage ---
+.build_template:
+  stage: build
+  script:
+    - echo "Building project..."
+    - mkdir -p $BUILD_DIR
+    - cp -r ./* $BUILD_DIR  # Copy project (adjust if needed)
+    - ls -la $BUILD_DIR      # Debug: Verify files exist
+  artifacts:
+    paths:
+      - $BUILD_DIR/**/*
+    expire_in: 1 week       # Keep build artifacts for 1 week
+    when: on_success
+
+# Example: Node.js app build
+build-node:
+  extends: .build_template
+  script:
+    - cd $BUILD_DIR && npm install
+    - cd $BUILD_DIR && npm run build
+  needs: []
+
+# --- Test Stage ---
+.test_template:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - cd $BUILD_DIR && npm test
+  # Add specific test steps here (e.g., database setup)
+  only:
+    - merge_requests
+    - main  # Optional: Only run tests for MRs or main branch
+
+# Example: Frontend tests
+test-frontend:
+  extends: .test_template
+  image: node:latest
+
+# --- Deployment Stage ---
+.deploy_template:
+  stage: deploy
+  script:
+    - echo "Deploying to $PROD_ENV..."
+    - ./deploy.sh $PROD_ENV  # Custom script for deployment
+    - scp -r $BUILD_DIR/* user@$DEPLOY_HOST:/path/to/app  # Example (use SSH)
+  only:
+    - main
+  environment:
+    name: $PROD_ENV
+    url: https://your-app.example.com
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+# Example: Deploy backend to production
+deploy-backend:
+  extends: .deploy_template
+  variables:
+    PROD_ENV: "production_backend"
+    DEPLOY_HOST: "backend.example.com"
