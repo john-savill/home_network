@@ -1,0 +1,38 @@
+# .gitlab-ci.yml
+
+# Define variables for the build process
+variables:
+  NPM_REGISTRY: 'https://registry.npmjs.org'
+  NPM_TOKEN: $NPM_TOKEN
+  DOCKER_IMAGE: 'your-docker-image'
+  DEPLOYMENT_URL: 'http://your-deployment-url'
+
+stages:
+  - build
+  - test
+  - deploy
+
+# Build stage
+build:
+  stage: build
+  image: node:14
+  script:
+    - npm ci
+    - npm run build
+
+# Test stage
+test:
+  stage: test
+  image: node:14
+  script:
+    - npm run test
+
+# Deploy stage
+deploy:
+  stage: deploy
+  image: docker:latest
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $DOCKER_IMAGE .
+    - docker push $DOCKER_IMAGE
+    - curl -X POST $DEPLOYMENT_URL
