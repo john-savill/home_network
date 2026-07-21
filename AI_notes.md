@@ -54,13 +54,13 @@ I have to launch the models individually. To download and launch with the other 
 ```
 wget https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/qwen2.5-coder-3b-instruct-q4_k_m.gguf -O qwen2.5-coder-3b-q4km.gguf
 wget https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct-Q4_K_M.gguf -O llama32-3b-q4km.gguf
+wget https://huggingface.co/unsloth/Ministral-3-3B-Instruct-2512-GGUF/resolve/main/Ministral-3-3B-Instruct-2512-Q4_K_M.gguf -O Ministral-3-3B-q4km.gguf
 ```
-(add download of ministral here)
 ```
 llama-server -m models/qwen2.5-coder-3b-q4km.gguf --host 0.0.0.0
 llama-server -m models/llama32-3b-q4km.gguf --host 0.0.0.0 --ctx-size 4096
+llama-server -m models/Ministral-3-3B-q4km.gguf --host 0.0.0.0 --ctx-size 4096
 ```
-(add runing of minstral here)
 ## LLMs
 
 These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit.
