@@ -82,8 +82,8 @@ prompt test 3: "write a c function for reversing a string"
 
 |Test|ministral-3:3b|llama3.2:3b|qwen2.5-coder:3b|
 |---|---|---|---|
-|Open web/ollama prompt test 1|2.19 t/s | | |
-|Open web/ollama prompt test 2| | | |
+|Open web/ollama prompt test 1|2.19 t/s| | |
+|Open web/ollama prompt test 2|2.08 t/s| | |
 |Open web/ollama prompt test 3| | | |
 |llama.cpp web prompt test 1| |4.34 t/s|4.61 t/s|
 |llama.cpp web prompt test 2| |4.19 t/s|4.58 t/s|
@@ -97,11 +97,11 @@ prompt test 3: "write a c function for reversing a string"
 
 accuracy, continued conversation, etc.
 
- - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though.
+ - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow
 
  - llama32 on llama.cpp: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
 
  - Qwen on llama.cpp: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good.
 
-So ollama takes considerably longer, it has to spool up the AI each time, but you are able to easily switch between the LLMs if needed. Similar interface between both, don't really have a preference. Llama.cpp is much better if you know what LLM you want to use.
+So ollama takes considerably longer (maybe up to 10x), it has to spool up the AI each time, but you are able to easily switch between the LLMs if needed. Similar interface between both, don't really have a preference. Llama.cpp is much better if you know what LLM you want to use.
 
