@@ -31,7 +31,7 @@ ollama run qwen2.5-coder:3b
 ollama run llama3.2:3b
 ollama run ministral-3:3b
 ```
-* Haven't tried qwen3.5 with ollama
+*I Haven't tried qwen3.5 with ollama
 
 3. [llama.cpp]([https://llama.app](https://github.com/ggml-org/llama.cpp))
 
