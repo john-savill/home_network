@@ -14,12 +14,14 @@ The decision comes down to 2.5-inch SATA SSDs or M.2 NVME SSDs for storage. For 
 Below I will compare prices (as of Nov/Dec 2025 UK) for 3 setups; using 2.5-inch SSD, M.2 without PoE, and M.2 with PoE.
 ### Item overview
 
+***NOTE: Prices taken in mid-late 2025, there have been significant changes since then***
+
 #### Base:
 | Item | Price | Bought |
 | --- | --- | --- |
 | Pi-5 4GB | 56 | yes |
 | Miro-SD | 7 | yes |
-| Heatsink | 3.5 | |
+| Heatsink | 3.5 | yes |
 
 __Subtotal: 66.5__
 
@@ -56,7 +58,7 @@ __Subtotal: 109.8__
 | Storage (2 x 500GB) | 86.4 | from pihut website |
 | PoE hat | 21.2 | Waveshare (H) |
 | PoE injetor switch | 25.99 | Tp-Link |
-| PoE cable |  |  |
+| PoE cable | N/A | N/A |
 
 __Subtotal: 171.59__
 
@@ -104,7 +106,7 @@ One drive is running [immich](https://immich.app) for local photo storage.
 
 The other drive will either be shared across my network for other document storage or also used by immich, depending on the number of photos. To share the drive I would simply use SAMBA to make it networked drivr for my local workstations.
 
-...
+... ***To be continued***
 
 ## 4B cluster
 
