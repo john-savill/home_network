@@ -74,8 +74,8 @@ These are the LLMs I will be testing with, they are smaller LLMs confimed to wor
 
 There are a few others I would like to test on Raspberry Pi. I will note them here for future reference:
  1. [qwen 3.5](https://huggingface.co/unsloth/Qwen3.5-4B-GGUF)
- 2. [gemma 4 from google]()
- 3. [phi 4 mini from microsoft]()
+ 2. [gemma 4 from google](https://huggingface.co/google/gemma-4-E2B)
+ 3. [phi 4 mini from microsoft](https://huggingface.co/microsoft/Phi-4-mini-instruct)
 
 ## Results
 
