@@ -105,6 +105,8 @@ prompt test 3: "write a c function for reversing a string"
 
 accuracy, continued conversation, other tools (image rec?) etc.
 
+Outputs from the prompts can be found in the [ai_code_results](ai_code_results/) directory.
+
  - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow
  - ministral on llama.cpp: required context limiting to run. Noticably slower ininerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
 
