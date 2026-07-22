@@ -116,6 +116,8 @@ prompt test 3: "write a c function for reversing a string"
 
 ### notes
 
+clearing buffer cache command that's useful when switching between models a lot: `sync && echo 1 | sudo tee /proc/sys/vm/drop_caches`
+
 accuracy, continued conversation, other tools (image rec, image creation?) etc.
 
 Outputs from the prompts can be found in the [ai_code_results](ai_code_results/) directory.
