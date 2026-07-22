@@ -115,10 +115,10 @@ accuracy, continued conversation, other tools (image rec, image creation?) etc.
 
 Outputs from the prompts can be found in the [ai_code_results](ai_code_results/) directory.
 
- - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow.
- - ministral on llama.cpp: required context limiting to run. Noticably slower ininerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
+ - ministral on ollama: **Context limiting from ollama config** about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow.
+ - ministral on llama.cpp: **required context limiting to run.** Noticably slower ininerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
 
- - llama32 on llama.cpp: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
+ - llama32 on llama.cpp: **required context limiting to get it to run.** Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
 
  - Qwen on llama.cpp: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good.
 
