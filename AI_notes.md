@@ -4,7 +4,7 @@
 
 ## Agents
 
-1. [AIDER](https://aider.chat) A local terminal interface. I prefer OLLAMA local anyway and this can't be accesses remotely so won't be recorded in any of the benchmark results.
+1. [AIDER](https://aider.chat) A local terminal interface. I prefer OLLAMA local anyway and this can't be accessed remotely so won't be recorded in any of the benchmark results.
 
 2. [OLLAMA](https://ollama.com) Out-of-the-box experience `curl -fsSL https://ollama.com/install.sh | sh`. Some modifications made to the configuration:
 
@@ -38,7 +38,7 @@ I built this from source on the Pi CM5 so that it is optimised. The process was 
 
 ## Web Interface
 
-1. [Open WebUI](https://openwebui.com) Out-of-the-box experience using docker to host the web UI:
+1. [Open WebUI](https://openwebui.com) Out-of-the-box experience using docker to host the web UI of OLLAMA:
 
 ```
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
@@ -50,7 +50,7 @@ nice it has all the LLMs to choose from the API as it is running.
 ```
 llama-server -hf Qwen/Qwen2.5-Coder-3B-Instruct-GGUF:q4_k_m --host 0.0.0.0
 ```
-I have to launch the models individually. To download and launch with the other models:
+I am launching the models individually. To download and launch with the other models:
 ```
 wget https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/qwen2.5-coder-3b-instruct-q4_k_m.gguf -O qwen2.5-coder-3b-q4km.gguf
 wget https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct-Q4_K_M.gguf -O llama32-3b-q4km.gguf
@@ -61,6 +61,9 @@ llama-server -m models/qwen2.5-coder-3b-q4km.gguf --host 0.0.0.0
 llama-server -m models/llama32-3b-q4km.gguf --host 0.0.0.0 --ctx-size 4096
 llama-server -m models/Ministral-3-3B-q4km.gguf --host 0.0.0.0 --ctx-size 4096
 ```
+I will test using the router mode to launch  the server and select models from a local directory
+
+***To be continued ...***
 ## LLMs
 
 These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit.
@@ -68,6 +71,11 @@ These are the LLMs I will be testing with, they are smaller LLMs confimed to wor
  1. ministral-3:3b
  2. llama3.2:3b
  3. qwen2.5-coder:3b
+
+There are a few others I would like to test on Raspberry Pi. I will note them here for future reference:
+ 1. [qwen 3.5](https://huggingface.co/unsloth/Qwen3.5-4B-GGUF)
+ 2. [gemma 4 from google]()
+ 3. [phi 4 mini from microsoft]()
 
 ## Results
 
@@ -103,11 +111,11 @@ prompt test 3: "write a c function for reversing a string"
 
 ### notes
 
-accuracy, continued conversation, other tools (image rec?) etc.
+accuracy, continued conversation, other tools (image rec, image creation?) etc.
 
 Outputs from the prompts can be found in the [ai_code_results](ai_code_results/) directory.
 
- - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow
+ - ministral on ollama: about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow.
  - ministral on llama.cpp: required context limiting to run. Noticably slower ininerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
 
  - llama32 on llama.cpp: required context limiting to get it to run. Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
