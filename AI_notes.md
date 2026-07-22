@@ -67,6 +67,10 @@ You can also just launch the web interface and select, load, and unload models w
 ```
 llama-server --models-dir models/ --host 0.0.0.0
 ```
+For launching with a specific configuration to set context limits I have used a [models.ini](models.ini) file. Launch with:
+```
+llama-server --models-preset models.ini --host 0.0.0.0
+```
 
 ## LLMs
 
