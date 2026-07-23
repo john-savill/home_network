@@ -44,7 +44,7 @@ I built this from source on the Pi CM5 so that it is optimised. The process was 
 ```
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 ```
-nice it has all the LLMs to choose from the API as it is running.
+nice it has all the LLMs to choose from the API as it is running. Has user login page. On my network can be found at `http://192.168.0.21:3000/` and using the 11434 endpoint `http://192.168.0.21:11434` you can review that the backend is active should the webUI go down. 
 
 2. [llama.cpp-server](https://github.com/ggml-org/llama.cpp) Built the application from source on the SBC to hopefully use less overhead and be more efficient.
 
