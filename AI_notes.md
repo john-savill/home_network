@@ -114,7 +114,7 @@ prompt test 3: "write a c function for reversing a string"
 |llama.cpp web prompt test 2|3.10 t/s|4.19 t/s|4.58 t/s|5.88 t/s|
 |llama.cpp web prompt test 3|3.78 t/s |4.42 t/s|4.71 t/s|6.03 t/s|
 |llama.cpp RAM usage*|3.1GB|3.1GB|3.6GB|4.9GB|
-|llama.cpp context|limited to 4096|limited to 4096|32.77K|262.14k|
+|llama.cpp context|limited to 16k|limited to 16k|32.77K|262.14k|
 
 *just quickly taken with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
 
