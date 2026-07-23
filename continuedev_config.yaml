@@ -1,0 +1,41 @@
+#%YAML 1.1
+#---
+name: Main Config
+version: 1.0.0
+schema: v1
+#model_defaults: &model_defaults
+#    provider: llama.cpp
+#    apiBase: http://192.168.0.21:8080
+models:
+  - name: qwen-3.5:2b
+    model: qwen-3.5-2b
+    provider: llama.cpp
+    apiBase: http://192.168.0.21:8080
+#    useLegacyCompletionsEndpoint: true
+#    <<: *model_defaults
+  - name: qwen-3.5:4b
+    model: qwen-3.5-4b
+    provider: llama.cpp
+    apiBase: http://192.168.0.21:8080
+    defaultCompletionOptions:
+      contextLength: 16384
+      temperature: 0.2
+      topP: 0.9
+      minP: 0.05
+      topK: 40
+  - name: qwen-2.5:3b
+    model: qwen-2.5-3b
+    provider: llama.cpp
+    apiBase: http://192.168.0.21:8080
+  - name: gemma-4:2b
+    model: gemma-4-E2b
+    provider: llama.cpp
+    apiBase: http://192.168.0.21:8080
+    defaultCompletionOptions:
+      contextLength: 16384
+  - name: llama32:3b
+    model: llama32
+    provider: llama.cpp
+    apiBase: http://192.168.0.21:8080
+    defaultCompletionOptions:
+      contextLength: 16384
