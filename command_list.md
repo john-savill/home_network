@@ -13,7 +13,7 @@ free -h
 
 ## models
 
-download model
+download a model
 ```
 wget ...
 ```
@@ -27,8 +27,13 @@ llama-server --models-preset models.ini --host 0.0.0.0 --tools all
 
 ## OLLAMA
 
-Ollama sstatus check
-
+Ollama status check
+```
+sudo systemctl status ollama.service
+```
 Ollama service modify
+```
+sudo systemctl edit ollama.service
+```
 
 Ollama/daemon service restart
