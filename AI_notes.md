@@ -1,3 +1,17 @@
+# Contents
+
+Agent config
+
+Web UI config
+
+LLMs under test
+
+Test setup
+
+Test quantifiable results
+
+Test notes
+
 # Learnings, walkthrough and benchmarks from setting up local LLMs
 
 ***Currently running everything on CM5, would like to move the web interface at least to a spare RPi 4B***
@@ -31,7 +45,7 @@ ollama run qwen2.5-coder:3b
 ollama run llama3.2:3b
 ollama run ministral-3:3b
 ```
-*I Haven't tried qwen3.5 with ollama
+***Note: These are the only models I tested with OLLAMAa***
 
 3. [llama.cpp]([https://llama.app](https://github.com/ggml-org/llama.cpp))
 
@@ -74,16 +88,17 @@ llama-server --models-preset models.ini --host 0.0.0.0
 
 ## LLMs
 
-These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit.
+These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit. I will also try to test them with different variables i.e. modifying their conext token amount.  
 
  1. ministral-3:3b
- 2. llama3.2:3b
- 3. qwen2.5-coder:3b
- 4. qwen3.5:2b
+ 2. llama-3.2:3b
+ 3. qwen-2.5-coder:3b
+ 4. qwen-3.5:2b
+ 5. qwen-3.5:4b
+ 6. gemma-4:E2b
 
 There are a few others I would like to test on Raspberry Pi. I will note them here for future reference:
- 1. [gemma 4 from google](https://huggingface.co/google/gemma-4-E2B)
- 2. [phi 4 mini from microsoft](https://huggingface.co/microsoft/Phi-4-mini-instruct)
+ 1. [phi 4 mini from microsoft](https://huggingface.co/microsoft/Phi-4-mini-instruct)
 
 ## Results
 
@@ -102,6 +117,8 @@ prompt test 3: "write a c function for reversing a string"
 |qwen2.5-coder:3b|1.9 GB|
 |qwen3.5:2b|1.19GB|
 
+***Unfinished, will add the detials of the other LLM I have testeds**
+
 ### Speed test results
 
 |Test|ministral-3:3b|llama3.2:3b|qwen2.5-coder:3b|qwen3.5:2b|
@@ -114,9 +131,10 @@ prompt test 3: "write a c function for reversing a string"
 |llama.cpp web prompt test 2|3.10 t/s|4.19 t/s|4.58 t/s|5.88 t/s|
 |llama.cpp web prompt test 3|3.78 t/s |4.42 t/s|4.71 t/s|6.03 t/s|
 |llama.cpp RAM usage*|3.1GB|3.1GB|3.6GB|4.9GB|
-|llama.cpp context|limited to 16k|limited to 16k|32.77K|262.14k|
+|llama.cpp context|limited to 4k**|limited to 4k**|32.77K|262.14k|
 
 *just quickly taken with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
+**limited to just 4k to get running, it will run with larger contexts, I will check the imact this has on speed.
 
 ### notes
 
@@ -131,9 +149,11 @@ Outputs from the prompts can be found in the [ai_code_results](ai_code_results/)
 
  - llama32 on llama.cpp: **required context limiting to get it to run.** Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
 
- - Qwen 2.5 on llama.cpp: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good.
+ - Qwen 2.5 on llama.cpp: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good, will have to test.
 
- - Qwen 3.5 on llama.cpp: again longer weekend prompt, better explanations I think around the response itself. much quicker, still lacking some detail compared to llama32 and ministral.
+ - Qwen 3.5:2b on llama.cpp: again longer weekend prompt, better explanations I think around the response itself. much quicker, still lacking some detail compared to llama32 and ministral, and will ahve to check accuracy.
 
 So ollama takes considerably longer (maybe up to 10x), it has to spool up the AI each time, but you are able to easily switch between the LLMs if needed. Similar interface between both, don't really have a preference. Llama.cpp is much better if you know what LLM you want to use.
+
+I have been having my doubts about Qwen, I think some of the other LLMs are giving me more accurate results.
 
