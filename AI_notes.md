@@ -134,7 +134,7 @@ prompt test 3: "write a c function for reversing a string"
 |llama.cpp context|limited to 4k**|limited to 4k**|32.77K|262.14k|
 
 *just quickly taken with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
-**limited to just 4k to get running, it will run with larger contexts, I will check the imact this has on speed.
+**limited to just 4k to get running, models will run with larger contexts (16k), I will check the imact this has on speed.
 
 ### notes
 
