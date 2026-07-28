@@ -153,6 +153,8 @@ Outputs from the prompts can be found in the [ai_code_results](ai_code_results/)
 
  - Qwen 3.5:2b on llama.cpp: again longer weekend prompt, better explanations I think around the response itself. much quicker, still lacking some detail compared to llama32 and ministral, and will ahve to check accuracy.
 
+ - Gemma 4:E2b on llama.cpp: has been my go-to for tasks. Seems very capable. Haven't fully reviewed with prompts yet, would like to tweak some of the settings ( temperature,context, etc. ) to find optimal prompt response.
+
 So ollama takes considerably longer (maybe up to 10x), it has to spool up the AI each time, but you are able to easily switch between the LLMs if needed. Similar interface between both, don't really have a preference. Llama.cpp is much better if you know what LLM you want to use.
 
 I have been having my doubts about Qwen, I think some of the other LLMs are giving me more accurate results.
