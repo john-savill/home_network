@@ -12,7 +12,7 @@ Test quantifiable results
 
 Test notes
 
-# Learnings, walkthrough and benchmarks from setting up local LLMs
+# Learnings, walk through, and benchmarks from setting up local LLMs
 
 ***Currently running everything on CM5, would like to move the web interface at least to a spare RPi 4B***
 
@@ -88,7 +88,7 @@ llama-server --models-preset models.ini --host 0.0.0.0
 
 ## LLMs
 
-These are the LLMs I will be testing with, they are smaller LLMs confimed to work within the Pi CM5 8GB RAM limit. I will also try to test them with different variables i.e. modifying their conext token amount.  
+These are the LLMs I will be testing with, they are smaller LLMs confirmed to work within the Pi CM5 8GB RAM limit. I will also try to test them with different variables i.e. modifying their context token amount.  
 
  1. ministral-3:3b
  2. llama-3.2:3b
@@ -108,7 +108,7 @@ prompt test 2: "write a template gitlab ci/cd .yaml for me to use for building, 
 
 prompt test 3: "write a c function for reversing a string"
 
-### Overview of llms under test
+### Overview of LLMs under test
 
 |LLM|Local Size|
 |---|---|
@@ -117,7 +117,7 @@ prompt test 3: "write a c function for reversing a string"
 |qwen2.5-coder:3b|1.9 GB|
 |qwen3.5:2b|1.19GB|
 
-***Unfinished, will add the detials of the other LLM I have testeds**
+***Unfinished, will add the details of the other LLM I have tested**
 
 ### Speed test results
 
@@ -134,7 +134,7 @@ prompt test 3: "write a c function for reversing a string"
 |llama.cpp context|limited to 4k**|limited to 4k**|32.77K|262.14k|
 
 *just quickly taken with the `free -h` command, so will include everything else running on the RPI but I will make sure to restart after each test.
-**limited to just 4k to get running, models will run with larger contexts (16k), I will check the imact this has on speed.
+**limited to just 4k to get running, models will run with larger contexts (16k), I will check the impact this has on speed.
 
 ### notes
 
@@ -145,13 +145,13 @@ accuracy, continued conversation, other tools (image rec, image creation?) etc.
 Outputs from the prompts can be found in the [ai_code_results](ai_code_results/) directory.
 
  - ministral on ollama: **Context limiting from ollama config** about 4 mins to start up, very thorough itinerary about 12 mins total though. Yaml very detailed again over 12 mins total, very slow.
- - ministral on llama.cpp: **required context limiting to run.** Noticably slower ininerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
+ - ministral on llama.cpp: **required context limiting to run.** Noticeably slower itinerary but detailed and kept to 2 days but used up over a third of it's context cache. Same happened with the .yaml prompt, very detailed. Speed seems to tail off the longer the prompt is working for.
 
- - llama32 on llama.cpp: **required context limiting to get it to run.** Good weekend itinerary, created a whole advanced template for 2nd primpt (using up context). c code looks good.
+ - llama32 on llama.cpp: **required context limiting to get it to run.** Good weekend itinerary, created a whole advanced template for 2nd prompt (using up context). c code looks good.
 
- - Qwen 2.5 on llama.cpp: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, templace and C code look good, will have to test.
+ - Qwen 2.5 on llama.cpp: went up to 5 days on weekend prompt on llama.cpp, maybe confused. Handled the others well, instant feedback, template and C code look good, will have to test.
 
- - Qwen 3.5:2b on llama.cpp: again longer weekend prompt, better explanations I think around the response itself. much quicker, still lacking some detail compared to llama32 and ministral, and will ahve to check accuracy.
+ - Qwen 3.5:2b on llama.cpp: again longer weekend prompt, better explanations I think around the response itself. much quicker, still lacking some detail compared to llama32 and ministral, and will have to check accuracy.
 
  - Gemma 4:E2b on llama.cpp: has been my go-to for tasks. Seems very capable. Haven't fully reviewed with prompts yet, would like to tweak some of the settings ( temperature,context, etc. ) to find optimal prompt response, as it does seem to over-explain a little for my liking.
 
