@@ -1,4 +1,4 @@
-# Docuemnting actual use of AI for applications
+# Documenting actual use of AI for applications
 
 This is a continuation of the notes I have made in [AI_notes](AI_notes.md) 
 
