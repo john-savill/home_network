@@ -1,8 +1,10 @@
 # Docuemnting actual use of AI for applications
 
+This is a continuation of the notes I have made in [AI_notes](AI_notes.md) 
+
 ## Continue.dev on VScode
 
-The continue.dev application enables you to use locally hosted models from inside the visual studio development environemnt.
+The continue.dev application enables you to use locally hosted models from inside the visual studio development environment.
 
 It took a little work to setup but I will document it here
 
