@@ -1,6 +1,6 @@
 
 # home_network
-Notes for home NAS and any other home network applications
+Notes for home NAS and any other home network applications. This page describes the my complete process from choosing and purchasing Raspberry Pi (RPi) hardware through to setting up network management software and network storage. Running local LLMs on my network is detailed on other pages.
 
 ## NAS
 
@@ -64,15 +64,15 @@ __Subtotal: 171.59__
 
 ### Decision for my use case
 
-I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for mostly photo storage and the addtional hardware is cheaper. I found a good deal on a couple of 256GB, Integral (UK) brand sata SSDs. 256GB is enough for my local storage in a RAID configuration, or 512GB without backups.
+I'm leaning towards the simple SATA setup without PoE for the moment, I should be able to modify the setup later and add PoE if needed. Memory prices are currently fluctuating quite a bit but SATA hasn't skyrocketed as much as NVME. I won't need the higher speeds for mostly photo storage and the additional hardware is cheaper. I found a good deal on a couple of 256GB, Integral (UK) brand sata SSDs. 256GB is enough for my local storage in a RAID configuration, or 512GB without backups.
 
 ### Steps
 
-Using the Pi-5 4GB version for the NAS. 4GB is fine for the simple NAS I'll be running. I've Flashed Pi-OS onto a 32GB Micro-SD card and connected the Pi to my home network. It is currently also running my [pi-hole](https://www.raspberrypi.com/tutorials/running-pi-hole-on-a-raspberry-pi/) network ad-blocking and DNS. Specifically enabled for my phone, laptop and smart TV.  
+Using the Pi-5 4GB version for the NAS. 4GB is fine for the simple NAS I'll be running. I've Flashed Pi-OS onto a 32GB Micro-SD card and connected the Pi to my home network.
 
-Next I connect up the appropriate hardware, The two SSDs via USB and screwed them into the NAS enclouse baseplate. Then I went through the following steps to make them usable memory:
+I connect up the appropriate hardware, The two SSDs via USB and screwed them into the NAS enclosure base plate. Then I went through the following steps to make them usable memory:
 
-Check the SSDs are viewed on the RPI (named soemthing like sda and sdb).
+Check the SSDs are viewed on the RPI (named something like sda and sdb).
 
     lsblk
 
@@ -104,9 +104,19 @@ by adding the following lines at the end
 
 One drive is running [immich](https://immich.app) for local photo storage.
 
-The other drive will either be shared across my network for other document storage or also used by immich, depending on the number of photos. To share the drive I would simply use SAMBA to make it networked drivr for my local workstations.
+The other drive will either be shared across my network for other document storage or also used by immich, depending on the number of photos. To share the drive I would simply use SAMBA to make it networked driver for my local workstations.
 
-... ***To be continued***
+***To be continued. Detail immich install and network storage setup with other drive***
+
+## Network management
+
+My network is managed using the RPi software [pi-hole](https://www.raspberrypi.com/tutorials/running-pi-hole-on-a-raspberry-pi/) that provides network ad-blocking and DNS. Specifically enabled for my phone, laptop and smart TV.
+
+It is running on my RPi-5 along with the immich photo storage as it will have a high uptime. 
+
+I followed the process described in the pihole linked webpage and reconfigured my Sky router to allow the DNS to happen externally. I will give a brief overview and note any specific challenges/changes to the followed tutorial. 
+
+***To noet in here ...***
 
 ## 4B cluster
 
@@ -114,15 +124,15 @@ From an office closure I was lucky enough to get a few Pi 4Bs with 64GB SD cards
 
 ### Steps 
 
-I ordered a custom 3D printed 5u 10-inch mini rack and a for holding all the relvant hardware and a custom rack mount for holding the RPI 4bs.
+I ordered a custom 3D printed 5u 10-inch mini rack and a for holding all the relevant hardware and a custom rack mount for holding the RPI 4bs.
 
 ![Initial rack setup](IMG_2867.HEIC)
 
-The RPIs have been flashed, connected to my network via ethernet and fitted into the rack mount.
+The RPIs have been flashed, connected to my network via Ethernet and fitted into the rack mount.
 
 ## AI on CM5
 
-I have a CM5 on a development board I have used for some intial learning. With the NVME SSD connected I would like to run a local LLM for my own benefit.
+I have a CM5 on a development board I have used for some initial learning, testing agents/LLMs, and hosting local AI. With the NVME SSD connected I am able to run a local LLM for my own benefit.
 
 Since this is requires some complex setup I will dedicate a whole page to it at [AI_notes.md](AI_notes.md)
 
