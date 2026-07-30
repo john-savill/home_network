@@ -1,3 +1,5 @@
+[Agent running local LLM](IMG_2868.HEIC)
+
 # Contents
 
 Agent config
