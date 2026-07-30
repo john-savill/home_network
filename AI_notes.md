@@ -1,4 +1,4 @@
-[Picture of agent running local LLM](IMG_2868.HEIC)
+![Picture of agent running local LLM](IMG_2868.HEIC)
 
 # Contents
 
