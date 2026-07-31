@@ -116,7 +116,7 @@ It is running on my RPi-5 along with the immich photo storage as it will have a 
 
 I followed the process described in the pihole linked webpage and reconfigured my Sky router to allow the DNS to happen externally. I will give a brief overview and note any specific challenges/changes to the followed tutorial. 
 
-***To noet in here ...***
+***To note in here ...***
 
 ## 4B cluster
 
