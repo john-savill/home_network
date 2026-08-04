@@ -67,7 +67,7 @@ nice it has all the LLMs to choose from the API as it is running. Has user login
 ```
 llama-server -hf Qwen/Qwen2.5-Coder-3B-Instruct-GGUF:q4_k_m --host 0.0.0.0
 ```
-I am launching the models individually. To download:
+At first I was launching the models individually. To download:
 ```
 wget https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct-GGUF/resolve/main/qwen2.5-coder-3b-instruct-q4_k_m.gguf -O qwen2.5-coder-3b-q4km.gguf
 wget https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct-Q4_K_M.gguf -O llama32-3b-q4km.gguf
@@ -79,11 +79,11 @@ and then launch the models, examples are below:
 llama-server -m models/qwen2.5-coder-3b-q4km.gguf --host 0.0.0.0
 llama-server -m models/llama32-3b-q4km.gguf --host 0.0.0.0 --ctx-size 4096
 ```
-You can also just launch the web interface and select, load, and unload models which is very convenient. The command is (provided the models are puled to the right location:
+You can also just launch the web interface and select, load, and unload models which is very convenient. The command is (provided the models are puled to the right location):
 ```
 llama-server --models-dir models/ --host 0.0.0.0
 ```
-For launching with a specific configuration to set context limits I have used a [models.ini](models.ini) file. Launch with:
+I now launch with a specific configuration to set context limits and models to use. I have used a [models.ini](models.ini) file, and launch with:
 ```
 llama-server --models-preset models.ini --host 0.0.0.0
 ```
