@@ -58,9 +58,9 @@ __Subtotal: 109.8__
 | Storage (2 x 500GB) | 86.4 | from pihut website |
 | PoE hat | 21.2 | Waveshare (H) |
 | PoE injetor switch | 25.99 | Tp-Link |
-| PoE cable | N/A | N/A |
+| PoE cable | 5? | ? |
 
-__Subtotal: 171.59__
+__Subtotal: 171.59+__
 
 ### Decision for my use case
 
